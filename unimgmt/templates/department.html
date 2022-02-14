@@ -1,0 +1,23 @@
+{% extends 'admindashboard.html' %}
+{% load static %}
+
+
+{% block specific%}
+<h2>Departments</h2>
+{% if messages %}
+                                <div class="message">
+                                    {% for message in messages %}
+                                    <p>{{message}}</p><br>
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
+<a href="{% url 'AddDept' %}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+    </i>Add Departments</a><br><br>
+    {% for i in departments %}
+    <div>{{i.dept_name}}<br> Location: {{i.building}}<br> Budget:{{i.budget}}
+        <a href="{% url 'Del_dept' i.dept_name %}">
+        <img src="https://img.icons8.com/material-rounded/16/000000/filled-trash.png"/></a>
+    </div><br>
+    {%endfor%}
+
+{% endblock%}

@@ -1,0 +1,22 @@
+{% extends 'admindashboard.html' %}
+{% load static %}
+
+
+{% block specific%}
+<h2>Instructors</h2>
+{% if messages %}
+                                <div class="message">
+                                    {% for message in messages %}
+                                    <p>{{message}}</p><br>
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
+<a href="{% url 'AddInstructor' %}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+    </i>Add Instructors</a><br><br>
+    {% for i in instructors %}
+    <div>Username: {{i.user.username}}<br> Name: {{i.name}}<br> Department: {{i.dept_name.dept_name}} <br>Salary:{{i.salary}}        <a href="{% url 'Del_instructor' i.id %}">
+        <img src="https://img.icons8.com/material-rounded/16/000000/filled-trash.png"/></a>
+    </div><br>
+    {%endfor%}
+
+{% endblock%}
